@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "808330931692",
+    "project_id": "egytour-492d1",
+    "storage_bucket": "egytour-492d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808330931692:android:aa093b486e2486d2ea24c9",
+        "android_client_info": {
+          "package_name": "com.example.graduationproject2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808330931692-ldj2crenjbvljh1lqeqpfit571h253tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHTq_B0NtUPKhUNxC1HvQZx4MfQ4hhKLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808330931692-ldj2crenjbvljh1lqeqpfit571h253tg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
