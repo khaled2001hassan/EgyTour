@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/gov"
+        android:icon="@drawable/search_location"
+        android:title="search for place" />
+
+    <item android:id="@+id/make_journey"
+        android:icon="@drawable/walk"
+        android:title="make journey" />
+
+</menu>
