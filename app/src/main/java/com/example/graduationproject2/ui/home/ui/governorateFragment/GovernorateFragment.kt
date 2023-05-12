@@ -1,5 +1,6 @@
 package com.example.graduationproject2.ui.home.ui.governorateFragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject2.R
+import com.example.graduationproject2.ui.city.CityActivity
 import com.example.graduationproject2.ui.home.ui.adpter.GovernorateAdapter
 import com.example.graduationproject2.ui.home.ui.adpter.GovernorateItem
 
 class GovernorateFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var adabter: GovernorateAdapter
+    private lateinit var viewModel: GovernorateViewModel
     val AdabterList = listOf<GovernorateItem>(
         GovernorateItem(name = "minya", image = R.drawable.minya),
         GovernorateItem(name = "cairo", image = R.drawable.cairo),
@@ -43,23 +46,18 @@ class GovernorateFragment : Fragment() {
     companion object {
         fun newInstance() = GovernorateFragment()
     }
-
-    private lateinit var viewModel: GovernorateViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_governorate, container, false)
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(GovernorateViewModel::class.java)
         // TODO: Use the ViewModel
 
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView=view.findViewById(R.id.GovRecycleView)
@@ -67,6 +65,9 @@ class GovernorateFragment : Fragment() {
         recyclerView.adapter=adabter
         adabter.itemClick=object : GovernorateAdapter.ItemClick{
             override fun click(gov: GovernorateItem) {
+                val intent=Intent(requireActivity(),CityActivity::class.java)
+                intent.putExtra("governorate",gov.name)
+                startActivity(intent)
 
             }
 

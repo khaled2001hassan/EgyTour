@@ -15,6 +15,20 @@
         android:theme="@style/Theme.GraduationProject2"
         tools:targetApi="31">
         <activity
+            android:name=".ui.places.RegionActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.home.ui.makeFragment.listPlaces.ListPlacesActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.city.CityActivity"
             android:exported="false">
             <meta-data

@@ -48,7 +48,7 @@
              android:layout_height="wrap_content"
              android:background="@color/gold"
              app:layout_constraintBottom_toBottomOf="parent"
-             app:menu="@menu/app_bot_nav"
+             app:menu="@menu/app_button_nav"
              app:itemIconTint="@drawable/item_select"
              app:itemTextColor="@drawable/item_select" />
       </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,14 +15,14 @@ import com.example.graduationproject2.ui.setting.SettingActivity
 
 
 class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         bind = DataBindingUtil.setContentView(this@HomeActivity, R.layout.activity_home)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-//       val drawerLayout: DrawerLayout = binding.drawerLayout
+        showFragment(GovernorateFragment())
+        initListener()
+    }
+    fun initListener(){
         bind.Setting.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
@@ -30,19 +30,17 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
         bind.SideItem.setOnClickListener {
             bind.drawerLayout.open()
         }
-        showFrogment(GovernorateFragment())
         bind.BottomNav.setOnItemSelectedListener {
             if (it.itemId==R.id.gov){
-                showFrogment(GovernorateFragment())
+                showFragment(GovernorateFragment())
             }else if (it.itemId==R.id.make_journey){
-                showFrogment(MakeFragment())
+                showFragment(MakeFragment())
 
             }
             return@setOnItemSelectedListener true
         }
-
     }
-    fun showFrogment(fragment: Fragment){
+    fun showFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.HomeFragment, fragment).commit()
     }
 }

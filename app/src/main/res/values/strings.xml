@@ -7,8 +7,335 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string-array name="governorate">
+        <item>Alexandria</item>
+        <item>Aswan</item>
+        <item>Asyut</item>
+        <item>Beheira</item>
+        <item>Beni Suef</item>
+        <item>Cairo</item>
+        <item>Dakahlia</item>
+        <item>Damietta</item>
+        <item>Faiyum</item>
+        <item>Gharbia</item>
+        <item>Giza</item>
+        <item>Ismailia</item>
+        <item>Kafr El Sheikh</item>
+        <item>Luxor</item>
+        <item>Matrouh</item>
+        <item>Minya</item>
+        <item>Monufia</item>
+        <item>New Valley</item>
+        <item>North Sinai</item>
+        <item>Port Said</item>
+        <item>Qalyubia</item>
+        <item>Qena</item>
+        <item>Red Sea</item>
+        <item>Sharqia</item>
+        <item>Sohag</item>
+        <item>South Sinai</item>
+        <item>Suez</item>
+    </string-array>
+
+    <string-array name="alexandria">
+        <item>Borg El Arab</item>
+        <item>El Ibrahimiya</item>
+        <item>El Montazah</item>
+        <item>El Maamoura</item>
+        <item>El Max</item>
+        <item>El Agamy</item>
+        <item>El Hadara</item>
+        <item>El Raml</item>
+        <item>El Mandara</item>
+        <item>El Shatby</item>
+        <item>Kafr Abdo</item>
+        <item>Louran</item>
+        <item>Mansheya</item>
+        <item>Montazah</item>
+        <item>Ras El Tin</item>
+        <item>Saba Pasha</item>
+        <item>Sidi Gaber</item>
+        <item>Sporting</item>
+        <item>Zizinia</item>
+    </string-array>
+
+    <string-array name="aswan">
+        <item>Aswan City</item>
+        <item>Abu Simbel</item>
+        <item>Darb El Hawa</item>
+        <item>Edfu</item>
+        <item>Kalabsha</item>
+        <item>Kom Ombo</item>
+        <item>Sheyba</item>
+    </string-array>
+    <string-array name="asyut">
+        <item>Abnub</item>
+        <item>Abu Tig</item>
+        <item>Asyut City</item>
+        <item>Dairout</item>
+        <item>El Badari</item>
+        <item>El Quseya</item>
+        <item>Manfalut</item>
+        <item>Sahel Selim</item>
+        <item>Sedfa</item>
+    </string-array>
+    <string-array name="beheira">
+        <item>Abu El Matamir</item>
+        <item>Beheira City</item>
+        <item>Damanhour</item>
+        <item>Edko</item>
+        <item>El Delengat</item>
+        <item>El Mahmoudiyah</item>
+        <item>El Nubaria</item>
+        <item>Etay El Baroud</item>
+        <item>Itsa</item>
+        <item>Keft</item>
+        <item>Kom Hamada</item>
+        <item>Rashid</item>
+        <item>Shubrakhit</item>
+        <item>Wadi El Natroun</item>
+    </string-array>
+    <string-array name="beni_suef">
+        <item>Al Fashn</item>
+        <item>Beni Suef City</item>
+        <item>Bibah</item>
+        <item>El Wasta</item>
+        <item>Nasser</item>
+    </string-array>
+    <string-array name="cairo">
+        <item>Giza</item>
+        <item>Helwan</item>
+        <item>6th of October</item>
+        <item>Nasr City</item>
+        <item>Heliopolis</item>
+        <item>Maadi</item>
+        <item>New Cairo</item>
+        <item>Zamalek</item>
+        <item>Rehab</item>
+        <item>Madinty</item>
+        <item>Shorouk City</item>
+        <item>Obour City</item>
+        <item>Mokattam</item>
+        <item>El Marg</item>
+        <item>El Matareya</item>
+        <item>El Salam City</item>
+        <item>El Sayeda Zainab</item>
+        <item>El Basateen</item>
+        <item>El Nozha</item>
+        <item>El Waili</item>
+        <item>El Zaher</item>
+        <item>El Shorouk</item>
+        <item>El Rehab City</item>
+        <item>Badr City</item>
+        <item>15th of May City</item>
+        <item>El Obour City</item>
+        <item>El Warraq</item>
+    </string-array>
+    <string-array name="dakahlia">
+        <item>Aga</item>
+        <item>Belqas</item>
+        <item>Dikirnis</item>
+        <item>Damanhur</item>
+        <item>El Gamalia</item>
+        <item>El Kurdi</item>
+        <item>El Mansoura</item>
+        <item>Ghamra</item>
+        <item>Meniet El Nasr</item>
+        <item>Mit Ghamr</item>
+        <item>Nabaroh</item>
+        <item>Sinbillawin</item>
+        <item>Talkha</item>
+        <item>Agzaiya</item>
+        <item>El Matareya</item>
+        <item>El Manzala</item>
+        <item>El Senbellawein</item>
+        <item>El Tamayoz</item>
+        <item>Mansoura City</item>
+        <item>Manzala City</item>
+        <item>El Gamil</item>
+        <item>Mit Salsil</item>
+        <item>Nabarouh City</item>
+        <item>Talkha City</item>
+        <item>Mit Salsil Al Jadidah</item>
+    </string-array>
+    <string-array name="damietta">
+        <item>Damietta City</item>
+        <item>Kafr Saad</item>
+        <item>New Damietta</item>
+        <item>Ras El Bar</item>
+        <item>Zarqa</item>
+    </string-array>
+    <string-array name="faiyum">
+        <item>El Faiyum City</item>
+        <item>El Gharaqna</item>
+        <item>Itsa</item>
+        <item>Shamshawa</item>
+        <item>Tamiya</item>
+        <item>Youssef El Seddik</item>
+    </string-array>
+    <string-array name="gharbia">
+        <item>El Mahalla El Kubra</item>
+        <item>Basyoun</item>
+        <item>El Santa</item>
+        <item>Kafr El Zayat</item>
+        <item>Samannoud</item>
+        <item>Tanta</item>
+        <item>Zefta</item>
+        <item>El Santa City</item>
+        <item>El Mahalla El Kubra City</item>
+        <item>Samannoud City</item>
+        <item>Tanta City</item>
+    </string-array>
+    <string-array name="giza">
+        <item>Giza City</item>
+        <item>6th of October City</item>
+        <item>Abu Rawash</item>
+        <item>Badrashein</item>
+        <item>El Ayat</item>
+        <item>El Hawamdeyya</item>
+        <item>El Saf</item>
+        <item>El Wahat El Baharia</item>
+        <item>Kerdasa</item>
+        <item>Nahia</item>
+        <item>Oseem</item>
+        <item>Saqarra</item>
+        <item>Al Badrashin</item>
+        <item>Al Haram</item>
+        <item>Al Saff</item>
+        <item>El Ayat City</item>
+        <item>El Badrashin City</item>
+        <item>El Hawamdeyya City</item>
+        <item>El Omrania</item>
+        <item>El Warraq City</item>
+        <item>Sheikh Zayed City</item>
+        <item>October Gardens</item>
+        <item>El Wahat El Baharia City</item>
+    </string-array>
+    <string-array name="ismailia">
+        <item>Ismailia City</item>
+        <item>Fayed</item>
+        <item>Qantara Sharq</item>
+        <item>Abou Sultan</item>
+        <item>El Qantara</item>
+        <item>Nefisah</item>
+        <item>El Tal El Kabir</item>
+    </string-array>
+
+    <string-array name="luxor">
+        <item>Luxor City</item>
+        <item>Armant</item>
+        <item>Esna</item>
+        <item>Al Bayadeya</item>
+        <item>El Tod</item>
+        <item>Qurna</item>
+        <item>Abu Haggag</item>
+    </string-array>
+    <string-array name="matruh">
+        <item>Marsa Matruh City</item>
+        <item>El Alamein</item>
+        <item>Dabaa</item>
+        <item>Siwa</item>
+        <item>Siwa Oasis</item>
+        <item>Al Hamam</item>
+        <item>Al Negaila</item>
+        <item>Mersa Matruh</item>
+        <item>Sidi Barrani</item>
+    </string-array>
+    <string-array name="minya">
+        <item>Abu Qurqas</item>
+        <item>Beni Mazar</item>
+        <item>Deir Mawas</item>
+        <item>Maghagha</item>
+        <item>Minya City</item>
+        <item>Samalut</item>
+        <item>Malawi</item>
+        <item>Adwa</item>
+    </string-array>
+    <string-array name="monufia">
+        <item>Al Sadat City</item>
+        <item>Ashmon</item>
+        <item>Berkt Al Sabaa</item>
+        <item>El Bagour</item>
+        <item>El Quesna</item>
+        <item>Menouf</item>
+        <item>Shebin El Koum</item>
+        <item>Tala</item>
+        <item>El Sadat City</item>
+        <item>El Shohadaa</item>
+        <item>Shohadaa City</item>
+    </string-array>
+    <string-array name="new_valley">
+        <item>Kharga</item>
+        <item>Dakhla</item>
+        <item>Farafra</item>
+        <item>Mut</item>
+    </string-array>
+    <string-array name="north_sinai">
+        <item>El Arish</item>
+        <item>Bir El Abd</item>
+        <item>Hasna</item>
+        <item>Nakhl</item>
+        <item>Rafah</item>
+    </string-array>
+    <string-array name="port_said">
+        <item>Port Said City</item>
+        <item>El Araby</item>
+        <item>El Manakh</item>
+    </string-array>
+    <string-array name="qalyubia">
+        <item>Banha</item>
+        <item>Khanka</item>
+        <item>Qaha</item>
+        <item>Qalyub</item>
+        <item>Shubra El Kheima</item>
+        <item>Toukh</item>
+        <item>El Khanka</item>
+        <item>Khanka City</item>
+        <item>Qaha City</item>
+        <item>Qalyub City</item>
+        <item>Shubra El Kheima City</item>
+    </string-array>
+    <string-array name="qena">
+        <item>Qena City</item>
+        <item>Abu Tesht</item>
+        <item>Dendera</item>
+        <item>Nag Hammadi</item>
+        <item>Naqada</item>
+        <item>Qift</item>
+    </string-array>
+    <string-array name="red_sea">
+        <item>Hurghada</item>
+        <item>El Gouna</item>
+        <item>Makadi Bay</item>
+        <item>Safaga</item>
+        <item>Al Qusair</item>
+        <item>Ras Gharib</item>
+        <item>Shalateen</item>
+        <item>Hamata</item>
+    </string-array>
+    <string-array name="sohag">
+        <item>Akhmim</item>
+        <item>El Maragha</item>
+        <item>Gerga</item>
+        <item>Saqalta</item>
+        <item>Sohag City</item>
+        <item>Tama</item>
+        <item>El Balyana</item>
+        <item>El Monshaa</item>
+    </string-array>
+    <string-array name="south_sinai">
+        <item>Sharm El Sheikh</item>
+        <item>Dahab</item>
+        <item>Nuweiba</item>
+        <item>Taba</item>
+    </string-array>
+    <string-array name="suez">
+        <item>Suez City</item>
+        <item>Ataqah</item>
+        <item>El Qantara Sharq</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/PlacesRegion"
+    android:title="Places"
+    android:icon="@drawable/places"
+    />
+    <item
+        android:id="@+id/HospitalRegion"
+        android:title="Hospital"
+        android:icon="@drawable/hospital"
+        />
+    <item
+        android:id="@+id/HotelRegion"
+        android:title="Hotel"
+        android:icon="@drawable/hotel"
+        />
+    <item
+        android:id="@+id/RestaurantRegion"
+        android:title="restaurant"
+        android:icon="@drawable/restaurant"
+        />
+
+
+
+</menu>
