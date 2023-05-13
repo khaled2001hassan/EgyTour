@@ -7,7 +7,7 @@ import com.example.graduationproject2.R
 import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivityCityBinding
 import com.example.graduationproject2.ui.city.Adapter.CityAdapter
-import com.example.graduationproject2.ui.places.RegionActivity
+import com.example.graduationproject2.ui.region.RegionActivity
 class CityActivity : Base<CityViewModel,ActivityCityBinding>() {
      var adapter= CityAdapter(listOf())
     override fun onCreate(savedInstanceState: Bundle?) {

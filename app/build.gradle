@@ -57,11 +57,14 @@ dependencies {
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata:2.6.1'
     //firebase
-
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
     configurations {
         implementation.exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
         implementation.exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'

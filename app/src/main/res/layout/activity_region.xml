@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_background"
-        tools:context=".ui.places.RegionActivity">
+        tools:context=".ui.region.RegionActivity">
 
         <TextView
             android:id="@+id/CityName"
@@ -26,7 +26,7 @@
             tools:text="khaled" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/ItemsFragment"
+            android:id="@+id/RegionFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/RegionBottomNavigation"

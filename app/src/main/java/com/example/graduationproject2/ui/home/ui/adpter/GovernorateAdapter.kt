@@ -32,10 +32,13 @@ class GovernorateAdapter(val list: List<GovernorateItem>) :
     override fun getItemCount(): Int {
         return list.size
     }
-    var itemClick :ItemClick?=null
-interface ItemClick{
-    fun click(gov :GovernorateItem)
-}
+
+    var itemClick: ItemClick? = null
+
+    interface ItemClick {
+        fun click(gov: GovernorateItem)
+    }
+
     class ViewHolder(val item: GovItemBinding) : RecyclerView.ViewHolder(item.root) {
         fun binding(listitem: GovernorateItem) {
             item.item = listitem
