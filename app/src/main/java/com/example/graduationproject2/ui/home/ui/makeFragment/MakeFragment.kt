@@ -22,9 +22,7 @@ class MakeFragment : Fragment() {
     var governorate ="Alexandria"
     var  city ="Borg El Arab"
     lateinit var currentCity:Array<String>
-    companion object {
-        fun newInstance() = MakeFragment()
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +33,13 @@ class MakeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MakeViewModel::class.java)
+        initSelected()
+        initListener()
+
+    }
+
+    fun initSelected() {
+
         binding.GovernorateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val govArray = resources.getStringArray(R.array.governorate)
@@ -75,18 +80,34 @@ class MakeFragment : Fragment() {
             }
 
         }
+    }
+    fun initListener() {
         binding.MakeButton.setOnClickListener {
-            if(binding.BudgetTextInput.editText!!.text.isEmpty()){
-                binding.BudgetTextInput.error="please enter valid budget"
-            }else if ( binding.BudgetTextInput.editText!!.text.isDigitsOnly()){
-                binding.BudgetTextInput.error=""
-            val intent =Intent(requireActivity(), ListPlacesActivity::class.java)
-            startActivity(intent)
-            }else {
-                binding.BudgetTextInput.error="please enter valid budget"
-            }
-        }
+            if (isValid()) return@setOnClickListener
 
+            val intent =Intent(requireActivity(), ListPlacesActivity::class.java)
+            intent.putExtra("governorate",governorate)
+            intent.putExtra("city",city)
+
+            val budget = binding.BudgetTextInput.editText!!.text.toString()
+
+            intent.putExtra("budget",budget)
+            startActivity(intent)
+
+        }
+    }
+    fun isValid():Boolean {
+        var valid = false
+        if(binding.BudgetTextInput.editText!!.text.isEmpty()){
+            binding.BudgetTextInput.error="please enter valid budget"
+            valid=true
+        }else if ( !binding.BudgetTextInput.editText!!.text.isDigitsOnly()){
+            binding.BudgetTextInput.error="please enter valid budget"
+            valid=true
+        }else {
+            binding.BudgetTextInput.error=""
+        }
+        return valid
     }
 
 }

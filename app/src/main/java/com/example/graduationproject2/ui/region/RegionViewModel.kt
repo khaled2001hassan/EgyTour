@@ -8,8 +8,5 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class RegionViewModel : BaseViewModel() {
-    val placesList = mutableListOf<Places>()
-    fun getPlaces(gov: String, city: String) {
 
-    }
 }

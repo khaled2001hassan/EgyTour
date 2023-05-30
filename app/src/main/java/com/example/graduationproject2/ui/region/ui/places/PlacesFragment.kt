@@ -14,32 +14,24 @@ import com.example.graduationproject2.databinding.FragmentPlacesBinding
 import com.example.graduationproject2.ui.region.ui.adapters.PlaceAdapter
 import com.example.graduationproject2.ui.region.ui.base.BaseReturn
 import com.example.graduationproject2.ui.region.ui.base.PlaceWithImage
-
 class PlacesFragment() : Fragment() {
     var baseReturn: BaseReturn? = null
     var adapter=PlaceAdapter(mutableListOf())
     companion object {
         fun getInstance(baseReturn: BaseReturn):PlacesFragment{
-            var placesFragment = PlacesFragment()
+            val placesFragment = PlacesFragment()
             placesFragment.baseReturn=baseReturn
             return placesFragment
         }
     }
-
     private lateinit var viewModel: PlacesViewModel
     lateinit var binding: FragmentPlacesBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_places, container, false)
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,13 +41,8 @@ class PlacesFragment() : Fragment() {
         binding.PlaceRecycleView.adapter=adapter
 
         viewModel.dataMutableLiveData.observe(viewLifecycleOwner){
-
             adapter=PlaceAdapter(it)
             binding.PlaceRecycleView.adapter=adapter
-//            it.forEach(){
-//              Glide.with(requireContext())
-//                .load(it.imageId)
-//                .into(binding.ImageTest)}
         }
     }
 

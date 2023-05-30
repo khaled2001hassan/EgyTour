@@ -1,7 +1,4 @@
 package com.example.graduationproject2.ui.region.ui.places
-
-
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.graduationproject2.base.BaseViewModel
 import com.example.graduationproject2.ui.region.ui.base.BaseReturn
@@ -11,8 +8,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
-
 class PlacesViewModel : BaseViewModel() {
     var placesList = mutableListOf<PlaceWithImage>()
     var dataMutableLiveData = MutableLiveData<MutableList<PlaceWithImage>>()
@@ -22,7 +17,7 @@ fun getPlaces(baseReturn: BaseReturn) {
         .document(baseReturn.cityNameReturn)
     test.collection("places").get().addOnSuccessListener { collectionSnapShot ->
         collectionSnapShot.documents.forEach() { documantationSnapShot ->
-            var place: Places = documantationSnapShot.toObject<Places>()!!
+            val place: Places = documantationSnapShot.toObject<Places>()!!
             var imageUrl=""
             val imageRef = FirebaseStorage.getInstance().reference.child("${baseReturn.governorate}/${place.name}.jpg")
             imageRef.downloadUrl.addOnSuccessListener { uri ->
