@@ -6,7 +6,7 @@
     <data>
         <variable
             name="test"
-            type="com.example.graduationproject2.ui.region.ui.base.PlaceWithImage" />
+            type="com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage" />
     </data>
 
     <androidx.cardview.widget.CardView

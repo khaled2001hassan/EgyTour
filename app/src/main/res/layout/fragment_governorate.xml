@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.ui.governorateFragment.GovernorateFragment">
+        tools:context=".userUi.home.ui.governorateFragment.GovernorateFragment">
 
         <ImageView
             android:id="@+id/imageFragment"

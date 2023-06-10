@@ -7,14 +7,14 @@
 
         <variable
             name="vm"
-            type="com.example.graduationproject2.ui.login.signUp.RegisterViewModel" />
+            type="com.example.graduationproject2.userUi.login.signUp.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_background"
-        tools:context=".ui.login.signUp.RegisterActivity">
+        tools:context=".userUi.login.signUp.RegisterActivity">
         <View
             android:id="@+id/registerTopView"
             android:layout_width="match_parent"

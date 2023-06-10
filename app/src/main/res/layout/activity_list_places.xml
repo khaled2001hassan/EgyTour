@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.ui.makeFragment.listPlaces.ListPlacesActivity">
+        tools:context=".userUi.home.ui.makeFragment.listPlaces.ListPlacesActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/PlacesRecyclerView"

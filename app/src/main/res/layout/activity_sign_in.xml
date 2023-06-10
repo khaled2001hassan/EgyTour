@@ -6,14 +6,14 @@
     <data>
 <variable
     name="vm"
-    type="com.example.graduationproject2.ui.login.signIn.SignInViewMoodel" />
+    type="com.example.graduationproject2.userUi.login.signIn.SignInViewMoodel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_background"
-        tools:context=".ui.login.signIn.SignInActivity">
+        tools:context=".userUi.login.signIn.SignInActivity">
         <View
             android:id="@+id/logInTopView"
             android:layout_width="match_parent"

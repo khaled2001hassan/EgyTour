@@ -15,63 +15,78 @@
         android:theme="@style/Theme.GraduationProject2"
         tools:targetApi="31">
         <activity
-            android:name=".ui.region.RegionActivity"
+            android:name=".adminUI.secondScreen.SecondActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.home.ui.makeFragment.listPlaces.ListPlacesActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.city.CityActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.setting.SettingActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.home.HomeActivity"
-            android:exported="true"
-            android:theme="@style/Theme.GraduationProject2.NoActionBar">
+            android:name=".adminUI.home.AdminHomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.login.signUp.RegisterActivity"
+            android:name=".userUi.region.RegionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.login.signIn.SignInActivity"
+            android:name=".userUi.home.ui.makeFragment.listPlaces.ListPlacesActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userUi.city.CityActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userUi.setting.SettingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userUi.home.HomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.GraduationProject2.NoActionBar">
+
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userUi.login.signUp.RegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userUi.login.signIn.SignInActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".userUi.splash.SplashActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

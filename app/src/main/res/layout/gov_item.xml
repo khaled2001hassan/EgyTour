@@ -6,7 +6,7 @@
     <data>
 <variable
     name="item"
-    type="com.example.graduationproject2.ui.home.ui.adpter.GovernorateItem" />
+    type="com.example.graduationproject2.userUi.home.ui.adpter.GovernorateItem" />
     </data>
 
     <androidx.cardview.widget.CardView
