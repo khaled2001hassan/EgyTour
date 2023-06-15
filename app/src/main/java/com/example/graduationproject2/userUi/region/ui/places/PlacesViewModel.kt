@@ -1,4 +1,5 @@
 package com.example.graduationproject2.userUi.region.ui.places
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.graduationproject2.base.BaseViewModel
 import com.example.graduationproject2.userUi.region.ui.base.BaseReturn
@@ -25,12 +26,22 @@ fun getPlaces(baseReturn: BaseReturn) {
                 val placeWithImage = PlaceWithImage(
                     id = documantationSnapShot.id, name = place.name,
                     description = place.description, ticket = place.ticket, imageId = imageUrl
+
+
                 )
                 placesList.add(placeWithImage)
+                Log.e("khaled",placeWithImage.description!!)
+
+
                 dataMutableLiveData.value = placesList
             }.addOnFailureListener { exception ->
+                Log.e("khaled",exception.message.toString())
             }
+
         }
+    }.addOnFailureListener { exception ->
+        Log.e("khaled",exception.message.toString())
+
     }
 }
 }

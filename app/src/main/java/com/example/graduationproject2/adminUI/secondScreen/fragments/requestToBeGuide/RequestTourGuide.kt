@@ -1,4 +1,4 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide
+package com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide
 
 class RequestTourGuide(
     val userId: String? = null,

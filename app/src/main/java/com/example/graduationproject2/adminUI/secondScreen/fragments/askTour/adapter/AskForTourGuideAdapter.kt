@@ -1,15 +1,12 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.adapter
+package com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject2.R
-import com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.RequestForTourGuide
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.RequestTourGuide
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.adapter.BeTourGuideAdapter
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.RequestForTourGuide
 import com.example.graduationproject2.databinding.AskForTourGuideBinding
-import com.example.graduationproject2.databinding.BeTourGuideBinding
 
 class AskForTourGuideAdapter(val request: MutableList<RequestForTourGuide>) :
     RecyclerView.Adapter<AskForTourGuideAdapter.ViewHolder>() {

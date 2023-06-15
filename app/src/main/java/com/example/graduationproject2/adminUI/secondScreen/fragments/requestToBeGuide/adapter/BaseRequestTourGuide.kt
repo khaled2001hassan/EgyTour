@@ -1,4 +1,4 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.adapter
+package com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.adapter
 
 class BaseRequestTourGuide(val name:String?=null,
                            val descreption:String?=null,

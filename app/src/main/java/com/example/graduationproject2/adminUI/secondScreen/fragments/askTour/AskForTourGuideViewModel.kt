@@ -1,10 +1,8 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour
+package com.example.graduationproject2.adminUI.secondScreen.fragments.askTour
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.adapter.BasicrequestForTourGuide
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.RequestTourGuide
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter.BasicrequestForTourGuide
 import com.example.graduationproject2.base.BaseViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject

@@ -1,8 +1,6 @@
 package com.example.graduationproject2.adminUI.secondScreen.fragments.problem
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.RequestTourGuide
 import com.example.graduationproject2.adminUI.secondScreen.fragments.problem.adapter.ProplemWithoutID
 import com.example.graduationproject2.adminUI.secondScreen.fragments.problem.adapter.problems
 import com.example.graduationproject2.base.BaseViewModel

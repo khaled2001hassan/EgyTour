@@ -24,11 +24,7 @@
         <activity
             android:name=".adminUI.home.AdminHomeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -55,7 +51,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".userUi.setting.SettingActivity"
+            android:name=".userUi.drawer.DrawerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -65,7 +61,6 @@
             android:name=".userUi.home.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.GraduationProject2.NoActionBar">
-
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -81,6 +76,12 @@
         <activity
             android:name=".userUi.login.signIn.SignInActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

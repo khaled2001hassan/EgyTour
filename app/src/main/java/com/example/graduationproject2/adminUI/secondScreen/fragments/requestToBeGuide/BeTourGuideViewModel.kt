@@ -1,8 +1,7 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide
+package com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.adapter.BaseRequestTourGuide
+import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.adapter.BaseRequestTourGuide
 import com.example.graduationproject2.base.BaseViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -25,7 +24,6 @@ class BeTourGuideViewModel : BaseViewModel() {
                         language = new.language,
                         descreption = new.descreption
                     )
-                  Log.e("khaled", new.descreption!!)
                     listOfRequests.add(data)
 
                 }

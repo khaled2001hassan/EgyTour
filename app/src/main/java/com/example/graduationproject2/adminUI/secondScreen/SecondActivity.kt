@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.graduationproject2.R
-import com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.AskForTourGuideFragment
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.BeTourGuideFragment
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.AskForTourGuideFragment
+import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.BeTourGuideFragment
 import com.example.graduationproject2.adminUI.secondScreen.fragments.problem.ProblemsFragment
 import com.example.graduationproject2.databinding.ActivitySecondBinding
 

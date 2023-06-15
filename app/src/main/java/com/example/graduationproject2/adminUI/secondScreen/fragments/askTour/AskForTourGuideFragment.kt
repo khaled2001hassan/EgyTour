@@ -1,4 +1,4 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour
+package com.example.graduationproject2.adminUI.secondScreen.fragments.askTour
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
-import com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.adapter.AskForTourGuideAdapter
-import com.example.graduationproject2.adminUI.secondScreen.fragments.RequestToBeGuide.adapter.BeTourGuideAdapter
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter.AskForTourGuideAdapter
 import com.example.graduationproject2.databinding.FragmentAskForTourGuideBinding
 
 class AskForTourGuideFragment : Fragment() {

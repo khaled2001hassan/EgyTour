@@ -1,10 +1,12 @@
 package com.example.graduationproject2.userUi.login.signIn
 
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import com.example.graduationproject2.base.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SignInViewMoodel : BaseViewModel() {
@@ -17,10 +19,23 @@ class SignInViewMoodel : BaseViewModel() {
     fun logIn() {
         if (valid()) return
         isLoadingLiveData.value = true
-        auth.signInWithEmailAndPassword(email.get()!!, password.get()!!).addOnCompleteListener {
+       val test = auth.signInWithEmailAndPassword(email.get()!!, password.get()!!)
+        test.addOnCompleteListener {
             isLoadingLiveData.value = false
             if (it.isSuccessful) {
-               signinNavigator!!.goTOHomeScreen()
+                val user = auth.currentUser!!.uid
+                val admins =Firebase.firestore.collection("admins").get()
+                admins.addOnSuccessListener{
+                    it.documents.forEach{
+                        if (it.id==user){
+                            signinNavigator!!.goTOHomeAdminScreen()
+                        }else{
+                            signinNavigator!!.goTOHomeScreen()
+
+                        }
+                    }
+                }
+
 
             } else {
                 dialogMessageLiveData.value = it.exception?.message

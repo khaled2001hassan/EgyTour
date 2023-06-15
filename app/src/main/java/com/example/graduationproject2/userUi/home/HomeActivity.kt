@@ -11,7 +11,7 @@ import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivityHomeBinding
 import com.example.graduationproject2.userUi.home.ui.governorateFragment.GovernorateFragment
 import com.example.graduationproject2.userUi.home.ui.makeFragment.MakeFragment
-import com.example.graduationproject2.userUi.setting.SettingActivity
+import com.example.graduationproject2.userUi.drawer.DrawerActivity
 
 
 class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
@@ -24,7 +24,23 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
     }
     fun initListener(){
         bind.Setting.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+            val intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("massage","Setting")
+            startActivity(intent)
+        }
+        bind.RequestToBeTourGuideSideTV.setOnClickListener {
+            val intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("massage","RequestTo")
+            startActivity(intent)
+        }
+        bind.AskForTourGuideSideTV.setOnClickListener {
+            val intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("massage","AskFor")
+            startActivity(intent)
+        }
+        bind.ProblemSideTV.setOnClickListener {
+            val intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("massage","Problem")
             startActivity(intent)
         }
         bind.SideItem.setOnClickListener {
@@ -39,6 +55,7 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
             }
             return@setOnItemSelectedListener true
         }
+
     }
     fun showFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.HomeFragment, fragment).commit()

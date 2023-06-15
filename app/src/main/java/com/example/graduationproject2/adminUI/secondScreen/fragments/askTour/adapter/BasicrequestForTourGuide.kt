@@ -1,4 +1,4 @@
-package com.example.graduationproject2.adminUI.secondScreen.fragments.AskTour.adapter
+package com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter
 
 class BasicrequestForTourGuide(val governorate:String?=null,
                                val days:Int?=null,
