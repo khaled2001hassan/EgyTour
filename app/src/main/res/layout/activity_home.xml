@@ -82,6 +82,26 @@
                     />
 
                 <TextView
+                    android:id="@+id/FirstNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:layout_marginStart="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/DrawerView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/LastNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    app:layout_constraintTop_toTopOf="@id/FirstNameTextView"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/FirstNameTextView"
+                    app:layout_constraintBottom_toBottomOf="@id/FirstNameTextView"
+                    />
+
+                <TextView
                     android:id="@+id/RequestToBeTourGuideSideTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

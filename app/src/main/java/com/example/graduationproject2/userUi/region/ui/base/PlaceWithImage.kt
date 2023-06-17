@@ -1,8 +1,21 @@
 package com.example.graduationproject2.userUi.region.ui.base
 
-class PlaceWithImage(  var id:String?=null ,
-                       var name :String?=null,
-                       var description:String?=null,
-                       var ticket:Int?=null,
-                       var imageId:  String?=null
-)
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.io.Serializable
+
+@Entity
+data class PlaceWithImage(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo
+    var id: String? = null,
+    @ColumnInfo
+    var name: String? = null,
+    @ColumnInfo
+    var description: String? = null,
+    @ColumnInfo
+    var ticket: Int? = null,
+    @ColumnInfo
+    var imageId: String = ""
+) : Serializable

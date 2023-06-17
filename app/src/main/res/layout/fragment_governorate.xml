@@ -12,14 +12,25 @@
         android:layout_height="match_parent"
         tools:context=".userUi.home.ui.governorateFragment.GovernorateFragment">
 
-        <ImageView
-            android:id="@+id/imageFragment"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/pyramid"
+            android:backgroundTint="@color/app_background"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="12dp"
             app:layout_constraintHeight_percent=".2"
-            />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/egypt_welcome"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/GovRecycleView"
@@ -27,8 +38,10 @@
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageFragment"
+            app:layout_constraintTop_toBottomOf="@+id/imageCardView"
+            app:layout_constraintVertical_bias="1.0"
             app:spanCount="3"
+            tools:layout_editor_absoluteX="40dp"
             tools:listitem="@layout/gov_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

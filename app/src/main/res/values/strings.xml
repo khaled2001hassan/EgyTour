@@ -11,33 +11,33 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string-array name="governorate">
-        <item>Alexandria</item>
-        <item>Aswan</item>
-        <item>Asyut</item>
-        <item>Beheira</item>
-        <item>Beni Suef</item>
-        <item>Cairo</item>
-        <item>Dakahlia</item>
-        <item>Damietta</item>
-        <item>Faiyum</item>
-        <item>Gharbia</item>
-        <item>Giza</item>
-        <item>Ismailia</item>
-        <item>Kafr El Sheikh</item>
-        <item>Luxor</item>
-        <item>Matrouh</item>
+        <item>alexandria</item>
+        <item>aswan</item>
+        <item>asyut</item>
+        <item>beheira</item>
+        <item>beni Suef</item>
+        <item>cairo</item>
+        <item>dakahlia</item>
+        <item>damietta</item>
+        <item>faiyum</item>
+        <item>gharbia</item>
+        <item>giza</item>
+        <item>ismailia</item>
+        <item>kafr El Sheikh</item>
+        <item>luxor</item>
+        <item>matruh</item>
         <item>minya</item>
-        <item>Monufia</item>
-        <item>New Valley</item>
-        <item>North Sinai</item>
-        <item>Port Said</item>
-        <item>Qalyubia</item>
-        <item>Qena</item>
-        <item>Red Sea</item>
-        <item>Sharqia</item>
-        <item>Sohag</item>
-        <item>South Sinai</item>
-        <item>Suez</item>
+        <item>monufia</item>
+        <item>new Valley</item>
+        <item>north Sinai</item>
+        <item>port Said</item>
+        <item>qalyubia</item>
+        <item>qena</item>
+        <item>red Sea</item>
+        <item>sharqia</item>
+        <item>sohag</item>
+        <item>south Sinai</item>
+        <item>suez</item>
     </string-array>
 
     <string-array name="alexandria">

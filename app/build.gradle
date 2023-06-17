@@ -70,5 +70,9 @@ dependencies {
         implementation.exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
         implementation.exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
     }
+    //Rooms
+    def room_version = "2.5.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
 }

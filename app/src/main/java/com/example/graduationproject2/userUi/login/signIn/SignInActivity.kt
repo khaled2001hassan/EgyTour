@@ -9,6 +9,7 @@ import com.example.graduationproject2.adminUI.home.AdminHomeActivity
 import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivitySignInBinding
 import com.example.graduationproject2.userUi.home.HomeActivity
+import com.example.graduationproject2.userUi.login.base.UserInfo
 import com.example.graduationproject2.userUi.login.signUp.RegisterActivity
 
 class SignInActivity  : Base<SignInViewMoodel, ActivitySignInBinding>(),SigninNavigator{
@@ -38,13 +39,17 @@ class SignInActivity  : Base<SignInViewMoodel, ActivitySignInBinding>(),SigninNa
         }
     }
 
-    override fun goTOHomeScreen() {
+    override fun goTOHomeScreen(user: UserInfo) {
         val intent=Intent(this,HomeActivity::class.java)
+        intent.putExtra("myObject", user)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
-    override fun goTOHomeAdminScreen() {
+    override fun goTOHomeAdminScreen(user: UserInfo) {
         val intent=Intent(this,AdminHomeActivity::class.java)
+        intent.putExtra("myObject", user)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 

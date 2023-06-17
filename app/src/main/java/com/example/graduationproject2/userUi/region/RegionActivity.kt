@@ -8,7 +8,10 @@ import com.example.graduationproject2.R
 import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivityRegionBinding
 import com.example.graduationproject2.userUi.region.ui.base.BaseReturn
+import com.example.graduationproject2.userUi.region.ui.hospital.HospitalFragment
+import com.example.graduationproject2.userUi.region.ui.hotel.HotelFragment
 import com.example.graduationproject2.userUi.region.ui.places.PlacesFragment
+import com.example.graduationproject2.userUi.region.ui.restorant.RestorantFragment
 
 class RegionActivity : Base<RegionViewModel, ActivityRegionBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +32,13 @@ class RegionActivity : Base<RegionViewModel, ActivityRegionBinding>() {
         bind.RegionBottomNavigation.setOnItemSelectedListener {
            if (it.itemId==R.id.PlacesRegion){
                showFragment(PlacesFragment.getInstance(baseReturn))
+           }else if (it.itemId==R.id.HospitalRegion){
+               showFragment(HospitalFragment.newInstance(baseReturn))
+           }else if (it.itemId==R.id.HotelRegion){
+               showFragment(HotelFragment.newInstance(baseReturn))
+
+           }else if (it.itemId==R.id.RestaurantRegion){
+               showFragment(RestorantFragment.newInstance(baseReturn))
            }
             return@setOnItemSelectedListener true
         }

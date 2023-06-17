@@ -12,6 +12,8 @@ import com.example.graduationproject2.databinding.ActivityHomeBinding
 import com.example.graduationproject2.userUi.home.ui.governorateFragment.GovernorateFragment
 import com.example.graduationproject2.userUi.home.ui.makeFragment.MakeFragment
 import com.example.graduationproject2.userUi.drawer.DrawerActivity
+import com.example.graduationproject2.userUi.login.base.UserInfo
+import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
 
 class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
@@ -19,10 +21,18 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this@HomeActivity, R.layout.activity_home)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val myObject = intent.getSerializableExtra("myObject") as UserInfo
         showFragment(GovernorateFragment())
-        initListener()
+        initListener(myObject)
+        initView(myObject)
     }
-    fun initListener(){
+
+    private fun initView(myObject: UserInfo) {
+        bind.FirstNameTextView.text=myObject.firstName
+        bind.LastNameTextView.text=myObject.lastName
+    }
+
+    fun initListener(myObject:UserInfo){
         bind.Setting.setOnClickListener {
             val intent = Intent(this, DrawerActivity::class.java)
             intent.putExtra("massage","Setting")
@@ -31,16 +41,20 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
         bind.RequestToBeTourGuideSideTV.setOnClickListener {
             val intent = Intent(this, DrawerActivity::class.java)
             intent.putExtra("massage","RequestTo")
+            intent.putExtra("myObject", myObject)
             startActivity(intent)
         }
         bind.AskForTourGuideSideTV.setOnClickListener {
             val intent = Intent(this, DrawerActivity::class.java)
             intent.putExtra("massage","AskFor")
+            intent.putExtra("myObject", myObject)
             startActivity(intent)
         }
         bind.ProblemSideTV.setOnClickListener {
             val intent = Intent(this, DrawerActivity::class.java)
             intent.putExtra("massage","Problem")
+            intent.putExtra("myObject", myObject)
+
             startActivity(intent)
         }
         bind.SideItem.setOnClickListener {

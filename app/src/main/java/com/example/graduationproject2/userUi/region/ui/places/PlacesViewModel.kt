@@ -12,7 +12,6 @@ import com.google.firebase.storage.FirebaseStorage
 class PlacesViewModel : BaseViewModel() {
     var placesList = mutableListOf<PlaceWithImage>()
     var dataMutableLiveData = MutableLiveData<MutableList<PlaceWithImage>>()
-//    var imageUrl:String = "https://firebasestorage.googleapis.com/v0/b/egytour-492d1.appspot.com/o/minya%2FBahnasa.jpg?alt=media&token=736d25ca-1b62-42fe-b95b-e53253e13992"
 fun getPlaces(baseReturn: BaseReturn) {
     val test = Firebase.firestore.collection(baseReturn.governorate)
         .document(baseReturn.cityNameReturn)
@@ -20,7 +19,7 @@ fun getPlaces(baseReturn: BaseReturn) {
         collectionSnapShot.documents.forEach() { documantationSnapShot ->
             val place: Places = documantationSnapShot.toObject<Places>()!!
             var imageUrl=""
-            val imageRef = FirebaseStorage.getInstance().reference.child("${baseReturn.governorate}/${place.name}.jpg")
+            val imageRef = FirebaseStorage.getInstance().reference.child("${baseReturn.governorate}/${documantationSnapShot.id}.jpg")
             imageRef.downloadUrl.addOnSuccessListener { uri ->
                 imageUrl = uri.toString()
                 val placeWithImage = PlaceWithImage(

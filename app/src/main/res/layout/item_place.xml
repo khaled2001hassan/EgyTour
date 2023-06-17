@@ -33,16 +33,17 @@
 
             <TextView
                 android:id="@+id/PlaceNameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/PlaceImage"
                 android:layout_margin="12dp"
+                android:ellipsize="none"
                 android:text="@{test.name}"
-                tools:text="khaled"
-                android:textSize="25sp"
                 android:textColor="@color/dark_blue"
-                />
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/PlaceImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="khaled" />
 
             <TextView
                 android:id="@+id/PlaceTicketTextView"
@@ -64,7 +65,6 @@
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="@+id/PlaceTicketTextView"
-
                 app:layout_constraintStart_toEndOf="@+id/PlaceTicketTextView"
                 app:layout_constraintTop_toTopOf="@+id/PlaceTicketTextView" />
 
