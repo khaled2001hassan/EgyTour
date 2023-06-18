@@ -15,7 +15,7 @@ class RestorantViewModel : ViewModel() {
     fun getRestaurant(baseReturn: BaseReturn) {
         val test = Firebase.firestore.collection(baseReturn.governorate)
             .document(baseReturn.cityNameReturn)
-        test.collection("restaurant").get().addOnSuccessListener { collectionSnapShot ->
+        test.collection("restorant").get().addOnSuccessListener { collectionSnapShot ->
             collectionSnapShot.documents.forEach() { documantationSnapShot ->
                 val restaurantWithoutImages: RestaurantWithoutImages = documantationSnapShot.toObject<RestaurantWithoutImages>()!!
                 var imageUrl=""

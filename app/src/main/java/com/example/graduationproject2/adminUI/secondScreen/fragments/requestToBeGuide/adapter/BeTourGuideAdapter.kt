@@ -21,7 +21,7 @@ class BeTourGuideAdapter(val request: MutableList<RequestTourGuide>) :
         val current = request.get(position)
         holder.item.NameTourGuide.text=current.name
         holder.item.DescriptionTourGuide.text=current.descreption
-        holder.item.IDTourGuide.text=current.id.toString()
+        holder.item.IDTourGuide.text=current.id
         holder.item.EducationTourGuide.text=current.education
         holder.item.languageTourGuide.text=current.language
         holder.item.LocationTourGuide.text=current.location

@@ -23,9 +23,13 @@ class problemAdapter(val proplem: MutableList<problems>) :
         holder.item.solutionTextView.text=current.solution
         holder.item.UserNameTextView.text=current.name
         holder.item.Done.setOnClickListener {
-
+            doneClick!!.click(current)
         }
 
+    }
+    var doneClick:DoneClick?=null
+    interface DoneClick{
+        fun click(proplem :problems)
     }
 
     override fun getItemCount(): Int {

@@ -10,26 +10,29 @@ import com.example.graduationproject2.userUi.drawer.ui.guide.AskToBeTourGuideFra
 import com.example.graduationproject2.userUi.drawer.ui.problem.WriteProblemFragment
 import com.example.graduationproject2.userUi.drawer.ui.setting.SettingFragment
 import com.example.graduationproject2.userUi.drawer.ui.user.UsetAskForGuideFragment
+import com.example.graduationproject2.userUi.login.base.UserInfo
+import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
 class DrawerActivity : AppCompatActivity() {
     lateinit var bind : ActivityDrawerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind=DataBindingUtil.setContentView(this,R.layout.activity_drawer)
+        val myObject = intent.getSerializableExtra("myObject") as UserInfo
         val send = intent.getStringExtra("massage")
-        pushFragment(send!!)
+        pushFragment(send!!,myObject)
 
     }
 
-    private fun pushFragment(send: String) {
+    private fun pushFragment(send: String,myObject:UserInfo,) {
         if (send=="Setting"){
             showFragment(SettingFragment())
         }else  if (send=="RequestTo"){
-            showFragment(AskToBeTourGuideFragment())
+            showFragment(AskToBeTourGuideFragment(myObject))
         }else  if (send=="Problem"){
-            showFragment(WriteProblemFragment())
+            showFragment(WriteProblemFragment(myObject))
         }else  if (send=="AskFor"){
-            showFragment(UsetAskForGuideFragment())
+            showFragment(UsetAskForGuideFragment(myObject))
         }
     }
 

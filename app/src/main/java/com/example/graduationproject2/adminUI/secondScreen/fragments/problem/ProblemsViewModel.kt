@@ -12,6 +12,7 @@ class ProblemsViewModel : BaseViewModel() {
     var listOfRequests= mutableListOf<problems>()
     var requestsLiveData= MutableLiveData<MutableList<problems>>()
     fun getRequests(){
+        isLoadingLiveData.value=true
         Firebase.firestore.collection("Problems").get()
             .addOnSuccessListener { collection->
                 collection.forEach{documantationSnapShot ->
@@ -19,13 +20,23 @@ class ProblemsViewModel : BaseViewModel() {
                     val data =problems(userID = documantationSnapShot.id, name = new.name, problem = new.problem
                     , solution = new.solution)
                     listOfRequests.add(data)
+                    isLoadingLiveData.value=false
 
                 }
                 requestsLiveData.value=listOfRequests
             }.addOnFailureListener {
-
-
+                isLoadingLiveData.value=false
             }
+
+    }
+
+    fun done(proplem: problems) {
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("Problems").document(proplem.userID!!).delete() .addOnSuccessListener {
+            isLoadingLiveData.value=false
+        }.addOnFailureListener {
+            isLoadingLiveData.value=false
+        }
 
     }
 }

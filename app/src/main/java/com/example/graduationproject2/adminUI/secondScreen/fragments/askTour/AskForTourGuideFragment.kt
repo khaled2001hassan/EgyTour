@@ -2,16 +2,16 @@ package com.example.graduationproject2.adminUI.secondScreen.fragments.askTour
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter.AskForTourGuideAdapter
+import com.example.graduationproject2.base.BaseFragment
 import com.example.graduationproject2.databinding.FragmentAskForTourGuideBinding
 
-class AskForTourGuideFragment : Fragment() {
+class AskForTourGuideFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = AskForTourGuideFragment()
@@ -36,24 +36,36 @@ class AskForTourGuideFragment : Fragment() {
         observation()
 
     }
-
+//    override fun onResume() {
+//        super.onResume()
+//        observation()
+//    }
     private fun observation() {
         viewModel.requestsLiveData.observe(viewLifecycleOwner){
             var askForTourGuideAdapter=AskForTourGuideAdapter(it)
             binding.UserRequestsRecycle.adapter= askForTourGuideAdapter
             askForTourGuideAdapter.accept=object :AskForTourGuideAdapter.Accept{
-                override fun acceptAction(userID: String) {
-                    viewModel.accept(userID)
+                override fun acceptAction(request: RequestForTourGuide) {
+                    viewModel.accept(request)
                 }
 
             }
             askForTourGuideAdapter.reject=object :AskForTourGuideAdapter.Reject{
-                override fun rejectAction(userID: String) {
-                    viewModel.reject(userID)
+                override fun rejectAction(request: RequestForTourGuide) {
+                    viewModel.reject(request)
+
                 }
+
 
             }
 
+        }
+        viewModel.isLoadingLiveData.observe(viewLifecycleOwner){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
+            }
         }
     }
 

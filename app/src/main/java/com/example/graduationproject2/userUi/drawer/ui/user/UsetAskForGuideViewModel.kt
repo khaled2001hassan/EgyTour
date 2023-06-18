@@ -1,8 +1,14 @@
 package com.example.graduationproject2.userUi.drawer.ui.user
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.RequestForTourGuide
+import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.RequestTourGuide
 import com.example.graduationproject2.base.BaseViewModel
+import com.example.graduationproject2.userUi.login.base.UserInfo
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class UsetAskForGuideViewModel : BaseViewModel() {
     var governorate= ObservableField<String>()
@@ -13,9 +19,28 @@ class UsetAskForGuideViewModel : BaseViewModel() {
     var errorDays= ObservableField<String>()
     var language= ObservableField<String>()
     var errorLanguage= ObservableField<String>()
-   fun send(){
-       if (valid()) return
-   }
+    val checkLiveData= MutableLiveData<Boolean>()
+    fun send(myObject: UserInfo){
+        if (valid()) return
+        val userRequestTourGuide= RequestForTourGuide(
+            userid = myObject.id,
+            language = language.get(),
+            governorate = governorate.get(),
+            days = days.get(),
+            phone = phone.get()
+
+        )
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("AskForTourGuide").document(myObject.id!!)
+            .set(userRequestTourGuide).addOnSuccessListener {
+                checkLiveData.value=true
+                isLoadingLiveData.value=false
+
+            }.addOnFailureListener {
+                checkLiveData.value=false
+                isLoadingLiveData.value=false
+            }
+    }
     fun valid(): Boolean {
         var isValid = false
         if (governorate.get().isNullOrBlank()) {

@@ -12,9 +12,9 @@ class AskForTourGuideViewModel : BaseViewModel() {
     var listOfRequests = mutableListOf<RequestForTourGuide>()
     var requestsLiveData = MutableLiveData<MutableList<RequestForTourGuide>>()
     fun getRequests() {
+        isLoadingLiveData.value=true
         Firebase.firestore.collection("AskForTourGuide").get()
             .addOnSuccessListener { collection ->
-
                 collection.forEach { documantationSnapShot ->
                     val new: BasicrequestForTourGuide = documantationSnapShot.toObject()
                     val data = RequestForTourGuide(
@@ -26,18 +26,35 @@ class AskForTourGuideViewModel : BaseViewModel() {
                     listOfRequests.add(data)
                 }
                 requestsLiveData.value = listOfRequests
+                isLoadingLiveData.value=false
             }.addOnFailureListener {
-
+                isLoadingLiveData.value=false
             }
 
     }
 
-    fun accept(userid: String) {
-        Log.e("khaled", userid)
+    fun accept(request:RequestForTourGuide) {
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("waitList").document(request.userid!!).set(request).addOnSuccessListener {
+            Firebase.firestore.collection("AskForTourGuide").document(request.userid!!).delete() .addOnSuccessListener {
+                isLoadingLiveData.value=false
+            }.addOnFailureListener {
+                isLoadingLiveData.value=false
+            }
+
+        }.addOnFailureListener {
+            isLoadingLiveData.value=false
+        }
+
     }
 
-    fun reject(userid: String) {
-        Log.e("khaled", userid)
-
+    fun reject(request:RequestForTourGuide) {
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("AskForTourGuide").document(request.userid!!).delete()
+            .addOnSuccessListener {
+            isLoadingLiveData.value=false
+        }.addOnFailureListener {
+            isLoadingLiveData.value=false
+        }
     }
 }

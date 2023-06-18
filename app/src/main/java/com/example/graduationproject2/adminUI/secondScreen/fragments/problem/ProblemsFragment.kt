@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.problem.adapter.problemAdapter
+import com.example.graduationproject2.adminUI.secondScreen.fragments.problem.adapter.problems
 import com.example.graduationproject2.databinding.FragmentProblemsBinding
 class ProblemsFragment : Fragment() {
 
@@ -34,11 +35,21 @@ class ProblemsFragment : Fragment() {
         observation()
 
     }
+//    override fun onResume() {
+//        super.onResume()
+//        observation()
+//    }
 
     private fun observation() {
         viewModel.requestsLiveData.observe(viewLifecycleOwner){
-            Log.e("khaled",it.get(0).name!!)
-            binding.ProblemRecycleView.adapter= problemAdapter(it)
+        val problemAdapter=problemAdapter(it)
+            problemAdapter.doneClick=object :problemAdapter.DoneClick{
+                override fun click(proplem: problems) {
+                    viewModel.done(proplem)
+                }
+
+            }
+            binding.ProblemRecycleView.adapter= problemAdapter
         }
     }
 

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject2.R
 import com.example.graduationproject2.base.Base
+import com.example.graduationproject2.base.rooms.MyDataBase
 import com.example.graduationproject2.databinding.ActivityListPlacesBinding
 import com.example.graduationproject2.userUi.details.DetailsActivity
 import com.example.graduationproject2.userUi.region.ui.adapters.PlaceAdapter
@@ -25,6 +26,7 @@ class ListPlacesActivity : Base<PlacesViewModel, ActivityListPlacesBinding>() {
         val baseReturn=BaseReturn(governorateName!!,cityName!!)
         viewModel.getPlaces(baseReturn)
         observation(badget!!.toInt())
+
 
     }
      fun observation(badget:Int) {
@@ -66,5 +68,6 @@ class ListPlacesActivity : Base<PlacesViewModel, ActivityListPlacesBinding>() {
          return returnPlaces
 
     }
+
 
 }

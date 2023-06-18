@@ -7,9 +7,9 @@ import java.io.Serializable
 
 @Entity
 data class PlaceWithImage(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo
-    var id: String? = null,
+    var id: String = "",
     @ColumnInfo
     var name: String? = null,
     @ColumnInfo

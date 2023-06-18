@@ -2,16 +2,16 @@ package com.example.graduationproject2.adminUI.secondScreen.fragments.requestToB
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.adapter.BeTourGuideAdapter
+import com.example.graduationproject2.base.BaseFragment
 import com.example.graduationproject2.databinding.FragmentBeTourGuideBinding
 
-class BeTourGuideFragment : Fragment() {
+class BeTourGuideFragment : BaseFragment() {
     lateinit var binding: FragmentBeTourGuideBinding
     val adapter = BeTourGuideAdapter(mutableListOf())
     private lateinit var viewModel: BeTourGuideViewModel
@@ -32,6 +32,28 @@ class BeTourGuideFragment : Fragment() {
         observation()
 
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.requestsLiveData.observe(viewLifecycleOwner) {
+            val beTourGuideAdapter = BeTourGuideAdapter(it)
+            binding.RequestsRecycleView.adapter = beTourGuideAdapter
+            beTourGuideAdapter.accept = object : BeTourGuideAdapter.Accept {
+                override fun acceptAction(guide: RequestTourGuide) {
+                    viewModel.accept(guide)
+                }
+
+            }
+            beTourGuideAdapter.reject = object : BeTourGuideAdapter.Reject {
+                override fun rejectAction(guide: RequestTourGuide) {
+                    viewModel.reject(guide)
+                }
+
+
+            }
+        }
     }
     private fun observation() {
         viewModel.requestsLiveData.observe(viewLifecycleOwner) {
@@ -49,6 +71,13 @@ class BeTourGuideFragment : Fragment() {
                 }
 
 
+            }
+        }
+        viewModel.isLoadingLiveData.observe(viewLifecycleOwner){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
             }
         }
 

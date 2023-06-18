@@ -11,6 +11,7 @@ class BeTourGuideViewModel : BaseViewModel() {
     var listOfRequests = mutableListOf<RequestTourGuide>()
     var requestsLiveData = MutableLiveData<MutableList<RequestTourGuide>>()
     fun getRequests() {
+        isLoadingLiveData.value=true
         Firebase.firestore.collection("AskToBeTourGuide").get()
             .addOnSuccessListener { collection ->
                 collection.forEach { documantationSnapShot ->
@@ -18,7 +19,7 @@ class BeTourGuideViewModel : BaseViewModel() {
                     val data = RequestTourGuide(
                         name = new.name,
                         userId = documantationSnapShot.id,
-                        id = new.id,
+                        id = new.id.toString(),
                         location = new.location,
                         education = new.education,
                         language = new.language,
@@ -28,9 +29,10 @@ class BeTourGuideViewModel : BaseViewModel() {
 
                 }
                 requestsLiveData.value = listOfRequests
+                isLoadingLiveData.value=false
+
             }.addOnFailureListener {
-
-
+                isLoadingLiveData.value=false
             }
 
     }
@@ -39,19 +41,33 @@ class BeTourGuideViewModel : BaseViewModel() {
         val data = BaseRequestTourGuide(
             name = guide.name,
             descreption = guide.descreption,
-            id = guide.id,
+            id = guide.id.toString(),
             location = guide.location,
             education = guide.education,
             language = guide.language
         )
+        isLoadingLiveData.value=true
         Firebase.firestore.collection("TourGuide").document(guide.userId!!)
             .set(data)
             .addOnSuccessListener {
-
+                Firebase.firestore.collection("AskToBeTourGuide").document(guide.userId!!).delete() .addOnSuccessListener {
+                    isLoadingLiveData.value=false
+                }.addOnFailureListener {
+                    isLoadingLiveData.value=false
+                }
+            }.addOnFailureListener {
+                isLoadingLiveData.value=false
             }
+
     }
 
     fun reject(guide: RequestTourGuide) {
-
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("AskToBeTourGuide").document(guide.userId!!).delete()
+            .addOnSuccessListener {
+            isLoadingLiveData.value=false
+        }.addOnFailureListener {
+            isLoadingLiveData.value=false
+        }
     }
 }

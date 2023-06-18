@@ -7,12 +7,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject2.R
+import com.example.graduationproject2.adminUI.home.AdminHomeActivity
 import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivityHomeBinding
 import com.example.graduationproject2.userUi.home.ui.governorateFragment.GovernorateFragment
 import com.example.graduationproject2.userUi.home.ui.makeFragment.MakeFragment
 import com.example.graduationproject2.userUi.drawer.DrawerActivity
+import com.example.graduationproject2.userUi.drawer.ui.favourite.FavouriteActivity
 import com.example.graduationproject2.userUi.login.base.UserInfo
+import com.example.graduationproject2.userUi.login.signIn.SignInActivity
 import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
 
@@ -21,7 +24,9 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this@HomeActivity, R.layout.activity_home)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        val myObject = intent.getSerializableExtra("myObject") as UserInfo
+//        var myObject = intent.getSerializableExtra("myObject") as UserInfo
+        val myObject= UserInfo(id="K4wDlvDaxWT1BNpe5uZkrN23Ljk2", firstName = "khaled","hassan")
+
         showFragment(GovernorateFragment())
         initListener(myObject)
         initView(myObject)
@@ -68,6 +73,15 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
 
             }
             return@setOnItemSelectedListener true
+        }
+        bind.FavouritePlaceTextView.setOnClickListener {
+            val intent = Intent(this, FavouriteActivity::class.java)
+            startActivity(intent)
+        }
+        bind.LogoutTextView.setOnClickListener {
+            val intent=Intent(this, SignInActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
 
     }

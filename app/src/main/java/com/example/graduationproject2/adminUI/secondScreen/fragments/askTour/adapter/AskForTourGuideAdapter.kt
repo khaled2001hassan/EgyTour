@@ -24,21 +24,20 @@ class AskForTourGuideAdapter(val request: MutableList<RequestForTourGuide>) :
         holder.item.PhoneUser.text=current.phone.toString()
         holder.item.TourDays.text=current.days.toString()
         holder.item.ButtonAcceptRequest.setOnClickListener {
-            accept!!.acceptAction(current.userid!!)
-
+            accept!!.acceptAction(current!!)
         }
         holder.item.ButtonRejectRequest.setOnClickListener {
-            reject!!.rejectAction(current.userid!!)
+            reject!!.rejectAction(current!!)
         }
 
     }
     var accept:Accept?=null
     interface Accept{
-        fun acceptAction(userID:String)
+        fun acceptAction(request:RequestForTourGuide)
     }
     var reject:Reject?=null
     interface Reject{
-        fun rejectAction(userID:String)
+        fun rejectAction(request:RequestForTourGuide)
     }
     override fun getItemCount(): Int {
         return request.size

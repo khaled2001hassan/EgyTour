@@ -1,7 +1,12 @@
 package com.example.graduationproject2.userUi.drawer.ui.guide
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
+import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.RequestTourGuide
 import com.example.graduationproject2.base.BaseViewModel
+import com.example.graduationproject2.userUi.login.base.UserInfo
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class AskToBeTourGuideViewModel : BaseViewModel() {
     var name= ObservableField<String>()
@@ -16,8 +21,28 @@ class AskToBeTourGuideViewModel : BaseViewModel() {
     var errorEducation= ObservableField<String>()
     var language= ObservableField<String>()
     var errorLanguage= ObservableField<String>()
-    fun send(){
+    val checkLiveData=MutableLiveData<Boolean>()
+    fun send(myObject: UserInfo){
         if (valid()) return
+        val requestTourGuide= RequestTourGuide(
+         userId= myObject.id,
+         name = name.get(),
+         descreption = description.get(),
+        id =iD.get()!!,
+         location = location.get(),
+         education = education.get(),
+         language = language.get()
+        )
+        isLoadingLiveData.value=true
+        Firebase.firestore.collection("AskToBeTourGuide").document(myObject.id!!)
+            .set(requestTourGuide).addOnSuccessListener {
+                checkLiveData.value=true
+                isLoadingLiveData.value=false
+
+        }.addOnFailureListener {
+                checkLiveData.value=false
+                isLoadingLiveData.value=false
+            }
     }
 
     fun valid(): Boolean {
@@ -41,7 +66,7 @@ class AskToBeTourGuideViewModel : BaseViewModel() {
             location.set(null)
         }
         if (iD.get().isNullOrBlank()) {
-            errorID.set("please enter your ID")
+            errorID.set("please enter your National ID")
             isValid = true
         } else {
             errorID.set(null)
