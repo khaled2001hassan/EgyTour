@@ -8,6 +8,9 @@
         <variable
             name="vm"
             type="com.example.graduationproject2.userUi.drawer.ui.problem.WriteProblemViewModel" />
+        <variable
+            name="info"
+            type="com.example.graduationproject2.userUi.login.base.UserInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,7 +109,7 @@
 
                     </LinearLayout>
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/ButtonSendProblem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -115,6 +118,7 @@
                         android:background="@drawable/button_background"
                         android:drawableEnd="@drawable/ic_send"
                         android:text="Send "
+                        android:onClick="@{()->vm.send(info)}"
                         android:textColor="@color/gold"
                         android:textSize="30sp" />
                 </LinearLayout>

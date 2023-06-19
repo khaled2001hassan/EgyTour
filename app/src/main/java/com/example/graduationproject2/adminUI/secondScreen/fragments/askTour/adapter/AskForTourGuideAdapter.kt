@@ -8,7 +8,7 @@ import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.RequestForTourGuide
 import com.example.graduationproject2.databinding.AskForTourGuideBinding
 
-class AskForTourGuideAdapter(val request: MutableList<RequestForTourGuide>) :
+class AskForTourGuideAdapter(var request: MutableList<RequestForTourGuide>) :
     RecyclerView.Adapter<AskForTourGuideAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,6 +16,10 @@ class AskForTourGuideAdapter(val request: MutableList<RequestForTourGuide>) :
             LayoutInflater.from(parent.context),
             R.layout.ask_for_tour_guide,parent,false)
         return ViewHolder(bind)
+    }
+    fun changePlace(item:MutableList<RequestForTourGuide>){
+        request = item
+        notifyDataSetChanged()
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = request.get(position)

@@ -16,6 +16,7 @@ class HotelViewModel : BaseViewModel() {
     var placesList = mutableListOf<PlaceWithImage>()
     var dataMutableLiveData = MutableLiveData<MutableList<PlaceWithImage>>()
     fun getHotels(baseReturn: BaseReturn) {
+        isLoadingLiveData.value=true
         val test = Firebase.firestore.collection(baseReturn.governorate)
             .document(baseReturn.cityNameReturn)
         test.collection("hotels").get().addOnSuccessListener { collectionSnapShot ->
@@ -28,21 +29,20 @@ class HotelViewModel : BaseViewModel() {
                     val placeWithImage = PlaceWithImage(
                         id = documantationSnapShot.id, name = place.name,
                         description = place.description, ticket = place.ticket, imageId = imageUrl
-
-
                     )
                     placesList.add(placeWithImage)
-                    Log.e("khaled",placeWithImage.description!!)
-
-
                     dataMutableLiveData.value = placesList
+                    isLoadingLiveData.value=false
+
                 }.addOnFailureListener { exception ->
-                    Log.e("khaled",exception.message.toString())
+                    isLoadingLiveData.value=false
+
                 }
 
             }
         }.addOnFailureListener { exception ->
-            Log.e("khaled",exception.message.toString())
+            isLoadingLiveData.value=false
+
 
         }
     }

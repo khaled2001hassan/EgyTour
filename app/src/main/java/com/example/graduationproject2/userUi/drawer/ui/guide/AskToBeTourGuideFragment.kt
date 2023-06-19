@@ -39,6 +39,10 @@ class AskToBeTourGuideFragment(val myObject:UserInfo) : BaseFragment() {
         observation(myObject)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+    }
     private fun observation(myObject:UserInfo) {
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner){
             if (it){

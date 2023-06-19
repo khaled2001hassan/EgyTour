@@ -14,11 +14,14 @@ class DetailsActivity : AppCompatActivity() {
     lateinit var bindind: ActivityDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         bindind = DataBindingUtil.setContentView(this, R.layout.activity_details)
 //        setContentView(R.layout.activity_details)
         val myObject = intent.getSerializableExtra("myObject") as PlaceWithImage
         bindind.test = myObject
-
+        bindind.BackArrowImageView.setOnClickListener {
+            finish()
+        }
         MyDataBase.getInstance(context = this@DetailsActivity).getPlaceDao().getPlace().forEach {
             if (myObject == it) {
                 check = true
@@ -36,14 +39,15 @@ class DetailsActivity : AppCompatActivity() {
             if (!check) {
                 MyDataBase.getInstance(this).getPlaceDao().addPlace(myObject)
                 bindind.favouriteImageView.setImageResource(R.drawable.ic_favorite)
-                check = false
+                check = true
 
             } else if (check) {
                 MyDataBase.getInstance(this).getPlaceDao().deletePlace(myObject)
                 bindind.favouriteImageView.setImageResource(R.drawable.ic_not_favorite)
-                check = true
+                check = false
             }
         }
 
     }
+
 }

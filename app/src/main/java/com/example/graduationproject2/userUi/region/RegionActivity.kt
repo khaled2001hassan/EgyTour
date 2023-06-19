@@ -1,5 +1,6 @@
 package com.example.graduationproject2.userUi.region
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject2.R
 import com.example.graduationproject2.base.Base
 import com.example.graduationproject2.databinding.ActivityRegionBinding
+import com.example.graduationproject2.userUi.region.ui.addPlaces.AddPlaceActivity
 import com.example.graduationproject2.userUi.region.ui.base.BaseReturn
 import com.example.graduationproject2.userUi.region.ui.hospital.HospitalFragment
 import com.example.graduationproject2.userUi.region.ui.hotel.HotelFragment
@@ -24,8 +26,6 @@ class RegionActivity : Base<RegionViewModel, ActivityRegionBinding>() {
         val baseReturn=BaseReturn(governorateName!!,cityName!!)
         initListener(baseReturn)
 
-
-
     }
     fun initListener(baseReturn:BaseReturn){
         showFragment(PlacesFragment.getInstance(baseReturn))
@@ -36,11 +36,16 @@ class RegionActivity : Base<RegionViewModel, ActivityRegionBinding>() {
                showFragment(HospitalFragment.newInstance(baseReturn))
            }else if (it.itemId==R.id.HotelRegion){
                showFragment(HotelFragment.newInstance(baseReturn))
-
            }else if (it.itemId==R.id.RestaurantRegion){
                showFragment(RestorantFragment.newInstance(baseReturn))
            }
             return@setOnItemSelectedListener true
+        }
+        bind.AddPlaceTextView.setOnClickListener {
+            val intent= Intent(this@RegionActivity,AddPlaceActivity::class.java)
+            intent.putExtra("governorate",baseReturn.governorate)
+            intent.putExtra("city",baseReturn.cityNameReturn)
+            startActivity(intent)
         }
     }
   fun showFragment(fragment: Fragment){

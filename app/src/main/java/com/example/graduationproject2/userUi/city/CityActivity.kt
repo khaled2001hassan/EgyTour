@@ -22,6 +22,13 @@ class CityActivity : Base<CityViewModel,ActivityCityBinding>() {
 
     }
     fun observation(governorateName:String){
+        viewModel.isLoadingLiveData.observe(this){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
+            }
+        }
         viewModel.cityNameMutableList.observe(this){
             adapter= CityAdapter(it.toList())
             bind.CityRecycleView.adapter=adapter
@@ -34,6 +41,7 @@ class CityActivity : Base<CityViewModel,ActivityCityBinding>() {
                 }
 
             }
+
 
         }
     }

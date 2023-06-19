@@ -23,6 +23,7 @@ class ProblemsViewModel : BaseViewModel() {
                     isLoadingLiveData.value=false
 
                 }
+                isLoadingLiveData.value=false
                 requestsLiveData.value=listOfRequests
             }.addOnFailureListener {
                 isLoadingLiveData.value=false

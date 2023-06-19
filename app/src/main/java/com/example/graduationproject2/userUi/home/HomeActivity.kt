@@ -24,8 +24,8 @@ class HomeActivity : Base<HomeViewModel, ActivityHomeBinding>() {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this@HomeActivity, R.layout.activity_home)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-//        var myObject = intent.getSerializableExtra("myObject") as UserInfo
-        val myObject= UserInfo(id="K4wDlvDaxWT1BNpe5uZkrN23Ljk2", firstName = "khaled","hassan")
+        var myObject = intent.getSerializableExtra("myObject") as UserInfo
+//        val myObject= UserInfo(id="K4wDlvDaxWT1BNpe5uZkrN23Ljk2", firstName = "khaled","hassan")
 
         showFragment(GovernorateFragment())
         initListener(myObject)

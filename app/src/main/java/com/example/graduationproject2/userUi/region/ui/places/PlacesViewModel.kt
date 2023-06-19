@@ -13,6 +13,8 @@ class PlacesViewModel : BaseViewModel() {
     var placesList = mutableListOf<PlaceWithImage>()
     var dataMutableLiveData = MutableLiveData<MutableList<PlaceWithImage>>()
 fun getPlaces(baseReturn: BaseReturn) {
+    isLoadingLiveData.value=true
+
     val test = Firebase.firestore.collection(baseReturn.governorate)
         .document(baseReturn.cityNameReturn)
     test.collection("places").get().addOnSuccessListener { collectionSnapShot ->
@@ -25,21 +27,23 @@ fun getPlaces(baseReturn: BaseReturn) {
                 val placeWithImage = PlaceWithImage(
                     id = documantationSnapShot.id, name = place.name,
                     description = place.description, ticket = place.ticket, imageId = imageUrl
-
-
                 )
                 placesList.add(placeWithImage)
                 Log.e("khaled",placeWithImage.description!!)
-
-
                 dataMutableLiveData.value = placesList
+                isLoadingLiveData.value=false
+
             }.addOnFailureListener { exception ->
                 Log.e("khaled",exception.message.toString())
+                isLoadingLiveData.value=false
+
             }
 
         }
     }.addOnFailureListener { exception ->
         Log.e("khaled",exception.message.toString())
+        isLoadingLiveData.value=false
+
 
     }
 }

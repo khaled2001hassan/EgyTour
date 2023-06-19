@@ -12,14 +12,14 @@
         android:layout_height="match_parent"
         tools:context=".adminUI.home.AdminHomeActivity">
 
-        <EditText
+        <TextView
             android:id="@+id/AppNameAdminScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:text="welcome EgyTour admins"
             android:textColor="@color/gold"
             android:textSize="20sp"
-            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,12 +30,12 @@
             android:layout_height="0dp"
             android:layout_margin="20sp"
             android:background="@drawable/button_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
             android:drawableStart="@drawable/be_tourguide"
+            android:padding="20sp"
             android:text="Tour Guide Requests"
             android:textSize="25sp"
-            android:padding="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AppNameAdminScreen" />
 
@@ -45,12 +45,12 @@
             android:layout_height="0dp"
             android:layout_margin="20sp"
             android:background="@drawable/button_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
             android:drawableStart="@drawable/tour_ask_for_tourguide"
+            android:padding="20sp"
             android:text="The user requests a tour guide"
             android:textSize="25sp"
-            android:padding="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UserToBeTourUide" />
 
@@ -60,15 +60,28 @@
             android:layout_height="0dp"
             android:layout_margin="20sp"
             android:background="@drawable/button_background"
+            android:drawableStart="@drawable/problems"
+            android:padding="20sp"
+            android:text="problems"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TourAskForTourGuide"
-            android:drawableStart="@drawable/problems"
-            android:text="problems"
-            android:textSize="25sp"
-            android:padding="20sp"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/TourAskForTourGuide" />
 
+        <TextView
+            android:id="@+id/LogoutAdminTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Problems"
+            android:textColor="#FF0000"
+            android:text="Logout"
+            android:drawableStart="@drawable/ic_logout"
+            android:layout_margin="20sp"
+            android:textSize="30sp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

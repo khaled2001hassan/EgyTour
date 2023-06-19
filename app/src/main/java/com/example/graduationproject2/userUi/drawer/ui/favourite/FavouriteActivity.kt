@@ -15,20 +15,31 @@ import com.example.graduationproject2.userUi.region.ui.adapters.PlaceAdapter
 import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
 class FavouriteActivity : AppCompatActivity() {
-    lateinit var adapter : PlaceAdapter
+    var adapter = PlaceAdapter(mutableListOf())
     lateinit var binding: ActivityFavouriteBinding
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1){
+            getPlaces()
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_favourite)
 //        setContentView(R.layout.activity_favourite)
+        getPlaces()
+
+    }
+    fun getPlaces(){
         MyDataBase.getInstance(this).getPlaceDao().getPlace()
         val adapterItem = MyDataBase.getInstance(this).getPlaceDao().getPlace()
-        if(adapterItem==null){
-            binding.NoItemImageView.isVisible=false
-        }else{
+        if(adapterItem.isEmpty()){
             binding.NoItemImageView.isVisible=true
+        }else{
+            binding.NoItemImageView.isVisible=false
+
         }
-        adapter = PlaceAdapter(adapterItem)
+         adapter.changeData(adapterItem)
 //        Log.e("khaled",adapterItem.get(0).id)
         adapter.onClick=object :PlaceAdapter.OnClick{
             override fun click(placeWithImage: PlaceWithImage) {
@@ -38,6 +49,10 @@ class FavouriteActivity : AppCompatActivity() {
             }
         }
         binding.FavouritePlaceRecycleView.adapter=adapter
+    }
 
+    override fun onResume() {
+        super.onResume()
+        getPlaces()
     }
 }

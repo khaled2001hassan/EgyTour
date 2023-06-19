@@ -2,18 +2,18 @@ package com.example.graduationproject2.userUi.region.ui.restorant
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
+import com.example.graduationproject2.base.BaseFragment
 import com.example.graduationproject2.databinding.FragmentRestorantBinding
-import com.example.graduationproject2.databinding.FragmentUsetAskForGuideBinding
 import com.example.graduationproject2.userUi.region.ui.adapters.RestaurantAdapter
 import com.example.graduationproject2.userUi.region.ui.base.BaseReturn
 
-class RestorantFragment : Fragment() {
+class RestorantFragment : BaseFragment() {
 var basereturn :BaseReturn?=null
     companion object {
         fun newInstance(basereturn:BaseReturn):RestorantFragment{
@@ -42,7 +42,19 @@ var basereturn :BaseReturn?=null
     }
 
     private fun observation() {
+        viewModel.isLoadingLiveData.observe(this){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
+            }
+        }
         viewModel.dataMutableLiveData.observe(viewLifecycleOwner){
+            if(it==null){
+                binding.NoItemImageView.isVisible=true
+            }else{
+                binding.NoItemImageView.isVisible=false
+            }
             restaurantAdapter=RestaurantAdapter(it)
             binding.RestaurantRecycleView.adapter=restaurantAdapter
 

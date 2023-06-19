@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.adapter.AskForTourGuideAdapter
@@ -19,7 +20,7 @@ class AskForTourGuideFragment : BaseFragment() {
 
     private lateinit var viewModel: AskForTourGuideViewModel
     lateinit var binding:FragmentAskForTourGuideBinding
-
+    var askForTourGuideAdapter=AskForTourGuideAdapter(mutableListOf())
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +29,6 @@ class AskForTourGuideFragment : BaseFragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AskForTourGuideViewModel::class.java)
@@ -36,17 +36,21 @@ class AskForTourGuideFragment : BaseFragment() {
         observation()
 
     }
-//    override fun onResume() {
-//        super.onResume()
-//        observation()
-//    }
+
     private fun observation() {
         viewModel.requestsLiveData.observe(viewLifecycleOwner){
-            var askForTourGuideAdapter=AskForTourGuideAdapter(it)
+            if(it.isNullOrEmpty()){
+                binding.NoItemImageView.isVisible=true
+            }else{
+                binding.NoItemImageView.isVisible=false
+
+            }
+           askForTourGuideAdapter.changePlace(it)
             binding.UserRequestsRecycle.adapter= askForTourGuideAdapter
             askForTourGuideAdapter.accept=object :AskForTourGuideAdapter.Accept{
                 override fun acceptAction(request: RequestForTourGuide) {
                     viewModel.accept(request)
+
                 }
 
             }
@@ -66,6 +70,29 @@ class AskForTourGuideFragment : BaseFragment() {
             }else{
                 hideLoading()
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.requestsLiveData.observe(viewLifecycleOwner){
+            askForTourGuideAdapter.changePlace(it)
+            binding.UserRequestsRecycle.adapter= askForTourGuideAdapter
+            askForTourGuideAdapter.accept=object :AskForTourGuideAdapter.Accept{
+                override fun acceptAction(request: RequestForTourGuide) {
+                    viewModel.accept(request)
+                }
+
+            }
+            askForTourGuideAdapter.reject=object :AskForTourGuideAdapter.Reject{
+                override fun rejectAction(request: RequestForTourGuide) {
+                    viewModel.reject(request)
+
+                }
+
+
+            }
+
         }
     }
 

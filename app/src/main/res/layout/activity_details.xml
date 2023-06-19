@@ -59,13 +59,14 @@
             tools:text="khaled" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/PlaceDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="12dp"
             android:backgroundTint="@color/gold"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/PlaceTicketTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/PlaceNameTextView">
@@ -75,7 +76,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/PlaceDescriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="12dp"
@@ -86,7 +86,36 @@
                     tools:text="khaled" />
             </ScrollView>
         </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:id="@+id/PlaceTicketTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/dark_blue"
+                android:textSize="25sp"
+                android:text="ticket :"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@{test.ticket.toString()}"
+                android:textColor="@color/dark_blue"
+                android:textSize="25sp"
+                tools:text="khaled" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

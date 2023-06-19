@@ -152,7 +152,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Enter your Location"
-                                android:text="@={vm.location}"
+                                android:text="@={vm.locationText}"
                                 android:textSize="22sp"
                                 app:error="@{vm.errorLocation}" />
                         </com.google.android.material.textfield.TextInputLayout>

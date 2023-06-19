@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
+import com.example.graduationproject2.base.BaseFragment
 import com.example.graduationproject2.databinding.FragmentHotelBinding
 import com.example.graduationproject2.userUi.details.DetailsActivity
 import com.example.graduationproject2.userUi.region.ui.adapters.PlaceAdapter
@@ -16,7 +18,7 @@ import com.example.graduationproject2.userUi.region.ui.base.BaseReturn
 import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
 
-class HotelFragment : Fragment() {
+class HotelFragment : BaseFragment() {
     var basereturn: BaseReturn? = null
 
     companion object {
@@ -48,7 +50,19 @@ class HotelFragment : Fragment() {
     }
 
     private fun observation() {
+        viewModel.isLoadingLiveData.observe(this){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
+            }
+        }
         viewModel.dataMutableLiveData.observe(viewLifecycleOwner) {
+            if(it==null){
+                binding.NoItemImageView.isVisible=true
+            }else{
+                binding.NoItemImageView.isVisible=false
+            }
             hotelsAdapter= PlaceAdapter(it)
             hotelsAdapter.onClick=object :PlaceAdapter.OnClick{
                 override fun click(placeWithImage: PlaceWithImage) {

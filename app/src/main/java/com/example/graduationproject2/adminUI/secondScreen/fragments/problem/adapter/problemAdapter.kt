@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject2.R
+import com.example.graduationproject2.adminUI.secondScreen.fragments.askTour.RequestForTourGuide
 import com.example.graduationproject2.databinding.ItemProblemBinding
 
-class problemAdapter(val proplem: MutableList<problems>) :
+class problemAdapter(var proplem: MutableList<problems>) :
     RecyclerView.Adapter<problemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,7 +17,10 @@ class problemAdapter(val proplem: MutableList<problems>) :
             R.layout.item_problem,parent,false)
         return ViewHolder(bind)
     }
-
+    fun changeProplem(item:MutableList<problems>){
+        proplem = item
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = proplem.get(position)
         holder.item.ProplemTextView.text=current.problem

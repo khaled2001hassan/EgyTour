@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
+import com.example.graduationproject2.base.BaseFragment
 import com.example.graduationproject2.databinding.FragmentHospitalBinding
 import com.example.graduationproject2.databinding.FragmentHotelBinding
 import com.example.graduationproject2.userUi.region.ui.adapters.HospitalAdapter
@@ -17,7 +19,7 @@ import com.example.graduationproject2.userUi.region.ui.base.Hospital
 import com.example.graduationproject2.userUi.region.ui.hotel.HotelFragment
 import com.example.graduationproject2.userUi.region.ui.hotel.HotelViewModel
 
-class HospitalFragment : Fragment() {
+class HospitalFragment : BaseFragment() {
     var basereturn: BaseReturn? = null
 
     companion object {
@@ -27,7 +29,6 @@ class HospitalFragment : Fragment() {
             return hospitalFragment
         }
     }
-
     var hospitalAdapter = HospitalAdapter(mutableListOf())
     lateinit var binding: FragmentHospitalBinding
     private lateinit var viewModel: HospitalViewModel
@@ -38,6 +39,7 @@ class HospitalFragment : Fragment() {
     ): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_hospital, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +50,19 @@ class HospitalFragment : Fragment() {
     }
 
     private fun observation() {
+        viewModel.isLoadingLiveData.observe(this){
+            if (it){
+                showLoading()
+            }else{
+                hideLoading()
+            }
+        }
         viewModel.dataMutableLiveData.observe(viewLifecycleOwner){
+            if(it==null){
+                binding.NoItemImageView.isVisible=true
+            }else{
+                binding.NoItemImageView.isVisible=false
+            }
             hospitalAdapter=HospitalAdapter(it)
             binding.HospitalRecycleView.adapter=hospitalAdapter
 

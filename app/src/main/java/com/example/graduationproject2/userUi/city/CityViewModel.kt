@@ -12,15 +12,17 @@ class CityViewModel:BaseViewModel() {
      var cityNameMutableList=MutableLiveData<MutableList<String>>()
 
     fun getCity(gov:String){
+        isLoadingLiveData.value=true
        val test= db.collection(gov).get().addOnSuccessListener { result ->
            for (document in result) {
-
                citynames.add(document.id)
            }
+           isLoadingLiveData.value=false
            cityNameMutableList.value=citynames
-       }
-           .addOnFailureListener { exception ->
+       }.addOnFailureListener { exception ->
                Log.e( "Error getting documents", exception.message!!)
+               isLoadingLiveData.value=false
+
            }
 
 

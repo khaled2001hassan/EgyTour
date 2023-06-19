@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.SecondActivity
 import com.example.graduationproject2.databinding.ActivityAdminHomeBinding
+import com.example.graduationproject2.userUi.login.signIn.SignInActivity
 
 class AdminHomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityAdminHomeBinding
@@ -33,6 +34,11 @@ class AdminHomeActivity : AppCompatActivity() {
          binding.Problems.setOnClickListener {
              val intent = Intent(this@AdminHomeActivity,SecondActivity::class.java)
              intent.putExtra("send","Problems")
+             startActivity(intent)
+         }
+         binding.LogoutAdminTextView.setOnClickListener {
+             val intent=Intent(this, SignInActivity::class.java)
+             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
              startActivity(intent)
          }
     }

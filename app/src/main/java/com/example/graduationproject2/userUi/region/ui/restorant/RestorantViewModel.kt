@@ -2,17 +2,18 @@ package com.example.graduationproject2.userUi.region.ui.restorant
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.graduationproject2.base.BaseViewModel
 import com.example.graduationproject2.userUi.region.ui.base.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
-class RestorantViewModel : ViewModel() {
+class RestorantViewModel : BaseViewModel() {
     var restaurantList = mutableListOf<Restaurant>()
     var dataMutableLiveData = MutableLiveData<MutableList<Restaurant>>()
     fun getRestaurant(baseReturn: BaseReturn) {
+        isLoadingLiveData.value=true
         val test = Firebase.firestore.collection(baseReturn.governorate)
             .document(baseReturn.cityNameReturn)
         test.collection("restorant").get().addOnSuccessListener { collectionSnapShot ->
@@ -32,13 +33,19 @@ class RestorantViewModel : ViewModel() {
                     )
                     restaurantList.add(placeWithImage)
                     dataMutableLiveData.value = restaurantList
+                    isLoadingLiveData.value=false
+
                 }.addOnFailureListener { exception ->
                     Log.e("khaled",exception.message.toString())
+                    isLoadingLiveData.value=false
+
                 }
 
             }
         }.addOnFailureListener { exception ->
             Log.e("khaled",exception.message.toString())
+            isLoadingLiveData.value=false
+
 
         }
     }

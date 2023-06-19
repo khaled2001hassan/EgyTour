@@ -1,5 +1,6 @@
 package com.example.graduationproject2.userUi.drawer.ui.guide
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.RequestTourGuide
@@ -15,7 +16,7 @@ class AskToBeTourGuideViewModel : BaseViewModel() {
     var errorDescription= ObservableField<String>()
     var iD= ObservableField<String>()
     var errorID= ObservableField<String>()
-    var location= ObservableField<String>()
+    var locationText= ObservableField<String>()
     var errorLocation= ObservableField<String>()
     var education= ObservableField<String>()
     var errorEducation= ObservableField<String>()
@@ -23,13 +24,15 @@ class AskToBeTourGuideViewModel : BaseViewModel() {
     var errorLanguage= ObservableField<String>()
     val checkLiveData=MutableLiveData<Boolean>()
     fun send(myObject: UserInfo){
+
         if (valid()) return
+
         val requestTourGuide= RequestTourGuide(
          userId= myObject.id,
          name = name.get(),
          descreption = description.get(),
-        id =iD.get()!!,
-         location = location.get(),
+         id =iD.get()!!,
+         location = locationText.get(),
          education = education.get(),
          language = language.get()
         )
@@ -59,11 +62,11 @@ class AskToBeTourGuideViewModel : BaseViewModel() {
         } else {
             errorDescription.set(null)
         }
-        if (location.get().isNullOrBlank()) {
+        if (locationText.get().isNullOrBlank()) {
             errorLocation.set("please enter your location")
             isValid = true
         } else {
-            location.set(null)
+            errorLocation.set(null)
         }
         if (iD.get().isNullOrBlank()) {
             errorID.set("please enter your National ID")

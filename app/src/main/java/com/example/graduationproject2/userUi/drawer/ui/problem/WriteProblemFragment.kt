@@ -3,6 +3,7 @@ package com.example.graduationproject2.userUi.drawer.ui.problem
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,9 +34,8 @@ class WriteProblemFragment(val myObject: UserInfo) : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(WriteProblemViewModel::class.java)
         observation(myObject)
-        binding.ButtonSendProblem.setOnClickListener {
-            viewModel.send(myObject)
-        }
+        binding.vm=viewModel
+        binding.info=myObject
     }
 
     private fun observation(myObject:UserInfo) {

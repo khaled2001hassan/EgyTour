@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.graduationproject2.R
 import com.example.graduationproject2.adminUI.secondScreen.fragments.requestToBeGuide.adapter.BeTourGuideAdapter
@@ -20,8 +21,7 @@ class BeTourGuideFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_be_tour_guide, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_be_tour_guide, container, false)
         return binding.root
 //        return inflater.inflate(R.layout.fragment_be_tour_guide, container, false)
     }
@@ -35,28 +35,14 @@ class BeTourGuideFragment : BaseFragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.requestsLiveData.observe(viewLifecycleOwner) {
-            val beTourGuideAdapter = BeTourGuideAdapter(it)
-            binding.RequestsRecycleView.adapter = beTourGuideAdapter
-            beTourGuideAdapter.accept = object : BeTourGuideAdapter.Accept {
-                override fun acceptAction(guide: RequestTourGuide) {
-                    viewModel.accept(guide)
-                }
-
-            }
-            beTourGuideAdapter.reject = object : BeTourGuideAdapter.Reject {
-                override fun rejectAction(guide: RequestTourGuide) {
-                    viewModel.reject(guide)
-                }
-
-
-            }
-        }
-    }
     private fun observation() {
         viewModel.requestsLiveData.observe(viewLifecycleOwner) {
+            if(it.isNullOrEmpty()){
+                binding.NoItemImageView.isVisible=true
+            }else{
+                binding.NoItemImageView.isVisible=false
+
+            }
             val beTourGuideAdapter = BeTourGuideAdapter(it)
             binding.RequestsRecycleView.adapter = beTourGuideAdapter
             beTourGuideAdapter.accept = object : BeTourGuideAdapter.Accept {

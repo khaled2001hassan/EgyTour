@@ -5,7 +5,6 @@ import androidx.databinding.ObservableField
 import com.example.graduationproject2.base.BaseViewModel
 import com.example.graduationproject2.userUi.login.base.UserInfo
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -18,7 +17,6 @@ class RegisterViewModel:BaseViewModel() {
     var errorLastName=ObservableField<String>()
     var errorEmail=ObservableField<String>()
     var errorPassword=ObservableField<String>()
-    var auth: FirebaseAuth = Firebase.auth
 
     fun createAccount() {
         Log.e("click create", "create account ")

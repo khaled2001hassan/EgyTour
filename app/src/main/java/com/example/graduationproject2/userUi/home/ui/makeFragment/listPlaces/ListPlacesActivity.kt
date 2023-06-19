@@ -2,6 +2,7 @@ package com.example.graduationproject2.userUi.home.ui.makeFragment.listPlaces
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationproject2.R
@@ -30,7 +31,19 @@ class ListPlacesActivity : Base<PlacesViewModel, ActivityListPlacesBinding>() {
 
     }
      fun observation(badget:Int) {
+         viewModel.isLoadingLiveData.observe(this){
+             if (it){
+                 showLoading()
+             }else{
+                 hideLoading()
+             }
+         }
         viewModel.dataMutableLiveData.observe(this){
+            if(it==null){
+                bind.NoItemImageView.isVisible=true
+            }else{
+                bind.NoItemImageView.isVisible=false
+            }
            adapter = PlaceAdapter(selectPlaces(it , badget))
             adapter.onClick=object :PlaceAdapter.OnClick{
                 override fun click(placeWithImage: PlaceWithImage) {
@@ -44,29 +57,32 @@ class ListPlacesActivity : Base<PlacesViewModel, ActivityListPlacesBinding>() {
 
         }
     }
-     fun selectPlaces(placesList: MutableList<PlaceWithImage>?, badget: Int):MutableList<PlaceWithImage> {
-         val returnPlaces= mutableListOf<PlaceWithImage>()
-         val baseList = placesList
-         var newbadget=badget
-         if (baseList.isNullOrEmpty())return returnPlaces
-         baseList.forEach(){
-             if (it.ticket==0){
-                 returnPlaces.add(it)
-                 baseList.remove(it)
-             }
-         }
-         while(newbadget >= 0 && !baseList.isEmpty()){
-             val randomPlace = baseList.random()
-             if (randomPlace.ticket!! <= newbadget){
-                 returnPlaces.add(randomPlace)
-                 newbadget -= randomPlace.ticket!!
-                 baseList.remove(randomPlace)
-             }else{
-             baseList.remove(randomPlace)
-             }
-         }
-         return returnPlaces
+    fun selectPlaces(placesList: MutableList<PlaceWithImage>?, badget: Int): MutableList<PlaceWithImage> {
+        val returnPlaces = mutableListOf<PlaceWithImage>()
+        val baseList = placesList?.toMutableList()
+        var newbadget = badget
+        if (baseList.isNullOrEmpty()) return returnPlaces
 
+        val toRemove = mutableListOf<PlaceWithImage>()
+        baseList.forEach {
+            if (it.ticket == 0) {
+                returnPlaces.add(it)
+                toRemove.add(it)
+            }
+        }
+        baseList.removeAll(toRemove)
+
+        while (newbadget >= 0 && baseList.isNotEmpty()) {
+            val randomPlace = baseList.random()
+            if (randomPlace.ticket!! <= newbadget) {
+                returnPlaces.add(randomPlace)
+                newbadget -= randomPlace.ticket!!
+                baseList.remove(randomPlace)
+            } else {
+                baseList.remove(randomPlace)
+            }
+        }
+        return returnPlaces
     }
 
 

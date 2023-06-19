@@ -8,36 +8,44 @@ import com.example.graduationproject2.R
 import com.example.graduationproject2.databinding.ItemPlaceBinding
 import com.example.graduationproject2.userUi.region.ui.base.PlaceWithImage
 
-class PlaceAdapter(val items:MutableList<PlaceWithImage>):
+class PlaceAdapter(var items: MutableList<PlaceWithImage>) :
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val bind=DataBindingUtil.inflate<ItemPlaceBinding>(LayoutInflater.from(parent.context)
-            ,R.layout.item_place,parent,false)
+        val bind = DataBindingUtil.inflate<ItemPlaceBinding>(
+            LayoutInflater.from(parent.context), R.layout.item_place, parent, false
+        )
         return ViewHolder(bind)
     }
 
+    fun changeData(newItems: MutableList<PlaceWithImage>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val current =items.get(position)
+        val current = items.get(position)
         holder.setTest(current)
-        holder.itemPlace.PlaceTicketTextView.text =current.ticket.toString()
+        holder.itemPlace.PlaceTicketTextView.text = current.ticket.toString()
         holder.itemView.setOnClickListener {
             onClick!!.click(current)
         }
     }
-    var onClick:OnClick?=null
-    interface OnClick{
-        fun click(placeWithImage:PlaceWithImage)
+
+    var onClick: OnClick? = null
+
+    interface OnClick {
+        fun click(placeWithImage: PlaceWithImage)
     }
 
     override fun getItemCount(): Int {
-       return items.size
+        return items.size
     }
 
-    class ViewHolder(val itemPlace:ItemPlaceBinding):RecyclerView.ViewHolder(itemPlace.root){
-        fun setTest (place:PlaceWithImage){
-            itemPlace.test=place
+    class ViewHolder(val itemPlace: ItemPlaceBinding) : RecyclerView.ViewHolder(itemPlace.root) {
+        fun setTest(place: PlaceWithImage) {
+            itemPlace.test = place
 
         }
     }

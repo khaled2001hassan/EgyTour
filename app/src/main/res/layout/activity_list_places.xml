@@ -12,14 +12,35 @@
         android:layout_height="match_parent"
         tools:context=".userUi.home.ui.makeFragment.listPlaces.ListPlacesActivity">
 
+        <TextView
+            android:id="@+id/TVListPlaces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="7sp"
+            android:textColor="@color/dark_blue"
+            android:textSize="30sp"
+            android:text="List Places"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/PlacesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_place"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TVListPlaces"
+            tools:listitem="@layout/item_place" />
+        <ImageView
+            android:id="@+id/NoItemImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/empty"
+            android:layout_margin="10sp"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         app:cardElevation="20dp"
-        android:backgroundTint="@color/app_background"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="20dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
